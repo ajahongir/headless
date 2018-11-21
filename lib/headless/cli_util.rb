@@ -12,6 +12,7 @@ class Headless
 
     # Credit: http://stackoverflow.com/a/5471032/6678
     def self.path_to(app)
+      return ENV[app.upcase] if ENV[app.upcase].present?
       exts = ENV['PATHEXT'] ? ENV['PATHEXT'].split(';') : ['']
       ENV['PATH'].split(File::PATH_SEPARATOR).each do |path|
         exts.each { |ext|
